@@ -45,9 +45,10 @@ const page = () => {
   }, [page]);
 
   return (
-    <div className="mt-16 mx-auto min-h-[100vh] w-[80vw] bg-gray-100">
+    <div className="mt-16 mx-auto min-h-[100vh] w-[95vw] md:w-[80vw] bg-gray-100">
       <NewsContainer news={news} />
     </div>
+
   );
 };
 
