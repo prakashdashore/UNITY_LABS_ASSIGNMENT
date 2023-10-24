@@ -9,13 +9,22 @@ const page = () => {
   const { objectID } = useParams();
   const [details, setdetails] = useState([]);
   const [singleStory, setsingleStory] = useState(null);
-  const { news } = useContext(Central);
+  const { news,searchedNews } = useContext(Central);
 
-  const getSingleStory = () => {
+
+  // console.log("sikdjfk" , singleStory)
+  const getRandomSingleStory = () => {
     news.map((e) => {
       e.objectID === objectID && setsingleStory(e);
     });
   };
+  const getSearchedSingleStory = () => {
+    searchedNews.map((e) => {
+      e.objectID === objectID && setsingleStory(e);
+    });
+  };
+
+
   const getNews = async () => {
     const { data } = await axios.get(
       `https://hn.algolia.com/api/v1/items/${objectID}`
@@ -25,7 +34,8 @@ const page = () => {
 
   useEffect(() => {
     getNews();
-    getSingleStory();
+    getRandomSingleStory();
+    getSearchedSingleStory();
   }, []);
 
   function tConvert(time) {

@@ -9,11 +9,14 @@ const Wrapper = ({ children }) => {
   const [searchKeyWord, setSearchKeyWord] = useState('');
   const [news, setnews] = useState([]);
   const [loading, setLoading] = useState(false)
+  const [searchedNews, setSearchedNews] = useState([])
 
   return (
     <NextUIProvider>
       <Central.Provider
-        value={{searchKeyWord, setSearchKeyWord , news, setnews , loading, setLoading}}
+        value={{searchKeyWord, setSearchKeyWord , news, setnews , loading, setLoading,
+          searchedNews, setSearchedNews
+        }}
       >
         <Nev />
         {children}

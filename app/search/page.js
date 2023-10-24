@@ -8,11 +8,11 @@ const page = () => {
   const { searchKeyWord } = d;
 
   const [page, setPage] = useState(0);
-  const {news ,setnews} = useContext(Central)
+  const { searchedNews, setSearchedNews} = useContext(Central)
 
   const getNews = async (page) => {
     const d = await getNewsBySearchKeyword(page, searchKeyWord);
-    setnews((pre) => [...pre, ...d]);
+    setSearchedNews((pre) => [...pre, ...d]);
     // console.log(d);
   };
 
@@ -44,9 +44,10 @@ const page = () => {
     getNews(page);
   }, [page]);
 
+
   return (
     <div className="mt-16 mx-auto min-h-[100vh] w-[95vw] md:w-[80vw] bg-gray-100">
-      <NewsContainer news={news} />
+      <NewsContainer news={searchedNews} />
     </div>
 
   );
